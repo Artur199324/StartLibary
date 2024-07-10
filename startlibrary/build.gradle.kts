@@ -47,7 +47,6 @@ publishing {
     publications {
         create<MavenPublication>("release") {
             from(components["release"])
-
             groupId = "com.github.Artur199324"
             artifactId = "StartLibary"
             version = "1.0.0"
