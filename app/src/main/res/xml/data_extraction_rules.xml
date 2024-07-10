@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
-    <cloud-backup>
-        <!-- Включение всех файлов из директории shared_prefs -->
-        <include domain="shared_prefs" path="."/>
-
-        <!-- Исключение конкретного файла из резервного копирования -->
-        <exclude domain="shared_prefs" path="exclude_this_file.xml"/>
-    </cloud-backup>
-    <device-transfer>
-        <!-- Включение всех файлов из директории databases -->
-        <include domain="databases" path="."/>
-
-        <!-- Исключение конкретного файла из переноса -->
-        <exclude domain="databases" path="exclude_this_db.db"/>
-    </device-transfer>
+    <include domain="sharedpref" path="."/>
+    <exclude domain="sharedpref" path="exclude_this_file.xml"/>
+    <include domain="database" path="."/>
+    <exclude domain="database" path="exclude_this_db.db"/>
 </data-extraction-rules>
