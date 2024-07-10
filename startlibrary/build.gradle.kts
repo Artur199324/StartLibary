@@ -46,7 +46,7 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("mavenRelease") {
+            create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibary"
