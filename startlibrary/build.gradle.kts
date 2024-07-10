@@ -46,12 +46,18 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("release") {
+            create<MavenPublication>("releaseAar") {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
-                artifactId = "StartLibary"
-                version = "1.0"
+                artifactId = "StartLibrary"
+                version = "1.0.1"
             }
         }
     }
+}
+
+repositories {
+    mavenCentral()
+    google()
+    maven { url = uri("https://jitpack.io") }
 }
