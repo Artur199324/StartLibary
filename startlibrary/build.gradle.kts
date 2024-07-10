@@ -51,7 +51,6 @@ afterEvaluate {
                 version = "1.0.3"
             }
         }
-
         repositories {
             mavenLocal()
             maven {
@@ -60,4 +59,10 @@ afterEvaluate {
             }
         }
     }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
