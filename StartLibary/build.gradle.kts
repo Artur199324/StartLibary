@@ -62,7 +62,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.22"
+                version = "1.0.23"
 
                 pom {
                     name.set("StartLibrary")
@@ -95,6 +95,10 @@ afterEvaluate {
             maven {
                 name = "jitpack"
                 url = uri("https://jitpack.io")
+                credentials {
+                    username = project.findProperty("jitpack.username") as String? ?: System.getenv("JITPACK_USERNAME")
+                    password = project.findProperty("jitpack.token") as String? ?: System.getenv("JITPACK_TOKEN")
+                }
             }
         }
     }
