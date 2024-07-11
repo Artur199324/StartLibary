@@ -35,6 +35,17 @@ android {
     }
 }
 
+tasks.register("checkAar") {
+    doLast {
+        val aarFile = file("build/outputs/aar/StartLibary-release.aar")
+        if (aarFile.exists()) {
+            println("AAR file exists: ${aarFile.absolutePath}")
+        } else {
+            throw GradleException("AAR file does not exist in the expected directory: ${aarFile.absolutePath}")
+        }
+    }
+}
+
 dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -51,7 +62,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.14"
+                version = "1.0.20"
 
                 pom {
                     name.set("StartLibrary")
@@ -75,10 +86,6 @@ afterEvaluate {
                         developerConnection.set("scm:git:ssh://github.com/Artur199324/StartLibrary.git")
                         url.set("https://github.com/Artur199324/StartLibrary")
                     }
-                }
-
-                artifact(tasks.getByName("bundleReleaseAar")) {
-                    classifier = "release"
                 }
             }
         }

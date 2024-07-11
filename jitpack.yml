@@ -8,8 +8,5 @@ install:
   - ./gradlew assemble
 
 script:
-  - ./gradlew build
-  - ./gradlew publishReleasePublicationToMavenLocal
-
-publish:
-  target: ./StartLibary/build/outputs/aar
+  - ./gradlew checkAar
+  - find . -name "*.aar" -exec ls -lh {} \;
