@@ -1,5 +1,3 @@
-import org.apache.tools.ant.util.JavaEnvUtils.VERSION_1_8
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -26,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     publishing {
         singleVariant("release")
@@ -53,7 +51,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.18"
+                version = "1.0.14"
 
                 pom {
                     name.set("StartLibrary")
@@ -77,18 +75,10 @@ afterEvaluate {
                         developerConnection.set("scm:git:ssh://github.com/Artur199324/StartLibrary.git")
                         url.set("https://github.com/Artur199324/StartLibrary")
                     }
-                    withXml {
-                        asNode().appendNode("pluginRepositories").apply {
-                            appendNode("pluginRepository").apply {
-                                appendNode("id", "maven-snapshots")
-                                appendNode("url", "https://repository.apache.org/content/repositories/snapshots/")
-                            }
-                            appendNode("pluginRepository").apply {
-                                appendNode("id", "maven-shade-plugin")
-                                appendNode("url", "https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin")
-                            }
-                        }
-                    }
+                }
+
+                artifact(tasks.getByName("bundleReleaseAar")) {
+                    classifier = "release"
                 }
             }
         }
