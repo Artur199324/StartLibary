@@ -8,5 +8,9 @@ install:
   - ./gradlew assemble
 
 script:
+  - ./gradlew build
   - ./gradlew checkAar
-  - find . -name "*.aar" -exec ls -lh {} \;
+  - echo "Listing AAR files in build/outputs/aar directory:"
+  - ls -lh build/outputs/aar
+  - echo "Listing all files in build directory:"
+  - find build -type f
