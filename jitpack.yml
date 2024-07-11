@@ -1,5 +1,5 @@
 jdk:
-    - openjdk17
+  - openjdk17
 
 before_install:
   - ./gradlew clean
@@ -9,3 +9,7 @@ install:
 
 script:
   - ./gradlew build
+  - ./gradlew publishReleasePublicationToMavenLocal
+
+publish:
+  target: ./StartLibary/build/outputs/aar
