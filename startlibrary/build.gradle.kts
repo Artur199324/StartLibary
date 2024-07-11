@@ -43,14 +43,39 @@ dependencies {
 
 afterEvaluate {
     publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components["release"])
-                groupId = "com.github.Artur199324"
-                artifactId = "StartLibrary"
-                version = "1.0.8"
-            }
+        publishing {
+            publications {
+                create<MavenPublication>("maven") {
+                    from(components["release"])
+                    groupId = "com.github.Artur199324"
+                    artifactId = "StartLibrary"
+                    version = "1.0.8"
 
+                    pom {
+                        name.set("StartLibrary")
+                        description.set("A simple Android library")
+                        url.set("https://github.com/Artur199324/StartLibrary")
+                        licenses {
+                            license {
+                                name.set("The Apache License, Version 2.0")
+                                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                            }
+                        }
+                        developers {
+                            developer {
+                                id.set("Artur199324")
+                                name.set("Artur")
+                                email.set("artur@example.com")
+                            }
+                        }
+                        scm {
+                            connection.set("scm:git:git://github.com/Artur199324/StartLibrary.git")
+                            developerConnection.set("scm:git:ssh://github.com/Artur199324/StartLibrary.git")
+                            url.set("https://github.com/Artur199324/StartLibrary")
+                        }
+                    }
+                }
+            }
         }
         repositories {
             mavenLocal()
