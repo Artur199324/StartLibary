@@ -1,3 +1,4 @@
+import org.apache.tools.ant.util.JavaEnvUtils.VERSION_1_8
 
 plugins {
     id("com.android.library")
@@ -48,12 +49,11 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.15"
+                version = "1.0.13"
 
                 pom {
                     name.set("StartLibrary")
