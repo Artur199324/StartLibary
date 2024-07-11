@@ -41,54 +41,50 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-afterEvaluate {
-    publishing {
-        publishing {
-            publications {
-                create<MavenPublication>("maven") {
-                    from(components["release"])
-                    groupId = "com.github.Artur199324"
-                    artifactId = "StartLibrary"
-                    version = "1.0.10"
+val sourceJar by tasks.creating(Jar::class) {
+    from(android.sourceSets["main"].java.srcDirs)
+    archiveClassifier.set("sources")
+}
 
-                    pom {
-                        name.set("StartLibrary")
-                        description.set("A simple Android library")
-                        url.set("https://github.com/Artur199324/StartLibrary")
-                        licenses {
-                            license {
-                                name.set("The Apache License, Version 2.0")
-                                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                            }
-                        }
-                        developers {
-                            developer {
-                                id.set("Artur199324")
-                                name.set("Artur")
-                                email.set("artur@example.com")
-                            }
-                        }
-                        scm {
-                            connection.set("scm:git:git://github.com/Artur199324/StartLibrary.git")
-                            developerConnection.set("scm:git:ssh://github.com/Artur199324/StartLibrary.git")
-                            url.set("https://github.com/Artur199324/StartLibrary")
-                        }
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.Artur199324"
+            artifactId = "StartLibrary"
+            version = "1.0.11"
+
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/startlibrary-release.aar")
+
+            pom {
+                name.set("StartLibrary")
+                description.set("A simple Android library")
+                url.set("https://github.com/Artur199324/StartLibrary")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
+                }
+                developers {
+                    developer {
+                        id.set("Artur199324")
+                        name.set("Artur")
+                        email.set("artur@example.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/Artur199324/StartLibrary.git")
+                    developerConnection.set("scm:git:ssh://github.com/Artur199324/StartLibrary.git")
+                    url.set("https://github.com/Artur199324/StartLibrary")
                 }
             }
         }
-        repositories {
-            mavenLocal()
-            maven {
-                name = "jitpack"
-                url = uri("https://jitpack.io")
-            }
+    }
+
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
         }
     }
-}
-
-repositories {
-    google()
-    mavenCentral()
-    maven { url = uri("https://jitpack.io") }
 }
