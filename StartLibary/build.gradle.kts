@@ -1,4 +1,3 @@
-import org.apache.tools.ant.util.JavaEnvUtils.VERSION_1_8
 
 plugins {
     id("com.android.library")
@@ -32,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    publishing {
+        singleVariant("release")
+    }
 }
 
 dependencies {
@@ -46,11 +48,12 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
+
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.13"
+                version = "1.0.15"
 
                 pom {
                     name.set("StartLibrary")
@@ -73,6 +76,18 @@ afterEvaluate {
                         connection.set("scm:git:git://github.com/Artur199324/StartLibrary.git")
                         developerConnection.set("scm:git:ssh://github.com/Artur199324/StartLibrary.git")
                         url.set("https://github.com/Artur199324/StartLibrary")
+                    }
+                    withXml {
+                        asNode().appendNode("pluginRepositories").apply {
+                            appendNode("pluginRepository").apply {
+                                appendNode("id", "maven-snapshots")
+                                appendNode("url", "https://repository.apache.org/content/repositories/snapshots/")
+                            }
+                            appendNode("pluginRepository").apply {
+                                appendNode("id", "maven-shade-plugin")
+                                appendNode("url", "https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin")
+                            }
+                        }
                     }
                 }
             }
