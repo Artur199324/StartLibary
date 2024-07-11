@@ -10,3 +10,4 @@ install:
 
 script:
   - ./gradlew publishToMavenLocal
+  - ls -R build/publications/maven

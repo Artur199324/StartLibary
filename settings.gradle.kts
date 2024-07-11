@@ -23,4 +23,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "StartLibrary"
 include(":app")
-include(":startlibrary")
+include(":StartLibary")
