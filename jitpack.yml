@@ -2,12 +2,10 @@ jdk:
   - openjdk11
 
 before_install:
-  - sdk install java 17.0.11-oracle
-  - sdk use java 17.0.11-oracle
+  - ./gradlew clean
 
 install:
-  - ./gradlew clean assemble
+  - ./gradlew assemble
 
 script:
-  - ./gradlew publishToMavenLocal
-  - ls -R build/publications/maven
+  - ./gradlew build
