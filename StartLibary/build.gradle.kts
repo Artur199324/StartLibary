@@ -50,7 +50,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.13"
+                version = "1.0.14"
 
                 pom {
                     name.set("StartLibrary")
