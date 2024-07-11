@@ -9,7 +9,8 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://repository.apache.org/content/repositories/snapshots/") }
+        maven { url = uri("https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin") }
     }
 }
 dependencyResolutionManagement {
