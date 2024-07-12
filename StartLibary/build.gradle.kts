@@ -37,7 +37,7 @@ android {
 
 tasks.register("checkAar") {
     doLast {
-        val aarFile = file("build/outputs/aar/StartLibary-release.aar")
+        val aarFile = file("build/outputs/aar/StartLibrary-release.aar")
         if (aarFile.exists()) {
             println("AAR file exists: ${aarFile.absolutePath}")
         } else {
@@ -62,7 +62,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.Artur199324"
                 artifactId = "StartLibrary"
-                version = "1.0.23"
+                version = "1.0.24"
 
                 pom {
                     name.set("StartLibrary")
